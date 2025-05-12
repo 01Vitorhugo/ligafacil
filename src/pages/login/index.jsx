@@ -20,7 +20,7 @@ export default function Login() {
 
             <section className='mt-10 w-full h-auto'>
 
-                <form action="" method="post" className=''>
+                <form>
 
                     <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
                         <label htmlFor="" className='text-colorPrin'>Email</label>
