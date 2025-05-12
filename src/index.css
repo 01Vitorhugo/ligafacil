@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Konkhmer+Sleokchher&display=swap');
+
+
+@theme {
+  --color-colorText: #fff;
+  --color-colorPrinOpacity: rgba(235, 135, 41, 0.4);
+  --color-colorPrin: #EB8729;
+  --color-colorInput: rgba(255, 255, 255, 0.4);
+}
+
+
+body{
+  background-color: #000;
+  font-family: "Codystar", sans-serif;
+  font-weight: 600;
+}
+h1{
+  font-size: 40px;
+   -webkit-text-stroke: 1px #eb8729;
+}
