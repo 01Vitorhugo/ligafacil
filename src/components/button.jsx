@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
 
-
-
-const Button = ({ label, onClick }) => {
-
-    
+const Button = ({ label, onClick, to }) => {
   return (
-    <button onClick={onClick} className="w-[173px] h-[43px]  rounded-lg text-colorPrin border border-colorInput flex justify-center items-center">
-      <p>{label}</p>
-    </button>
+    <Link to={to}>
+      <button
+        onClick={onClick}
+        className="w-[173px] h-[43px] rounded-lg text-colorPrin border border-colorInput flex justify-center items-center"
+      >
+        <p>{label}</p>
+      </button>
+    </Link>
   );
 };
 
