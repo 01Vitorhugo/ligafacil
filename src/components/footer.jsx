@@ -4,9 +4,9 @@ import iconInsta from "../assets/icon_instagram.png";
 import iconYoutube from "../assets/icon_youtube.png";
 
 
-
+/* Removido "fixed bottom-0 left-0" da classe do footer para que ele fique no fluxo normal da página */
 const Footer = () => (
-    <footer className="fixed bottom-0 left-0 w-full h-[81px] bg-colorFooter text-colorTextBlack flex items-center justify-evenly z-[100]">
+    <footer className=" h-[81px] bg-colorFooter text-colorTextBlack flex items-center justify-evenly z-[100]">
         <img src={logoFooter} alt="Imagem da logo" className="w-[67px] h-[67px]"/>
         <span className="text-[9px]">© {new Date().getFullYear()} LigaFacil. Todos os direitos reservados.</span>
         <div className="h-full w-[35px] flex flex-col justify-evenly items-center">
