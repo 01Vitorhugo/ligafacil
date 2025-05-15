@@ -60,7 +60,7 @@ export default function Login() {
 
                     <p className='text-colorText text-center mt-5 mb-5 text-[10px]'>OU</p>
 
-                     <div className='w-full h-auto flex justify-center mt-6'>
+                     <div className='w-full h-auto flex justify-center mt-6 mb-30'>
                         <Button label="Criar conta nova" onClick={testeButton()}  to="/register"/>
                     </div>
 

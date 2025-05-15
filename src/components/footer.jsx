@@ -3,8 +3,6 @@ import logoFooter from "../assets/logo_icon.png";
 import iconInsta from "../assets/icon_instagram.png";
 import iconYoutube from "../assets/icon_youtube.png";
 
-
-/* Removido "fixed bottom-0 left-0" da classe do footer para que ele fique no fluxo normal da página */
 const Footer = () => (
     <footer className=" h-[81px] bg-colorFooter text-colorTextBlack flex items-center justify-evenly z-[100]">
         <img src={logoFooter} alt="Imagem da logo" className="w-[67px] h-[67px]"/>
