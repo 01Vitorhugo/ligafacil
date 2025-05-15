@@ -59,7 +59,7 @@ export default function Login() {
                     </div>
 
                      <div className='w-full h-auto flex justify-center mt-8'>
-                        <Button label="Criar conta nova" onClick={testeButton()} />
+                        <Button label="Criar conta nova" onClick={testeButton()}  to="/register"/>
                     </div>
 
                 </form>
