@@ -1,11 +1,120 @@
+import { Link } from "react-router-dom";
+import iconSeta from "../../assets/icon_seta.png";
+import logo from "../../assets/logo_site.png";
+import Button from "../../components/button";
 
 
 
 export default function Register() {
 
-    return(
-        <>
-        <h1>Hellou, page of register</h1>
-        </>
+    return (
+        <div className="h-auto w-full">
+
+            <section className="w-full h-[111px] flex justify-between items-center pl-3 pr-3">
+                <Link to="/">
+                    <img src={iconSeta} alt="voltar" className="w-[40px] h-[57px]" />
+                </Link>
+
+                <img src={logo} alt="voltar" className="w-[97px] h-[97px]" />
+            </section>
+
+            <section className="w-full h-[81px]  pl-3 flex items-center border-b-1 border-colorPrinOpacity ">
+                <h1>Cadastro</h1>
+            </section>
+
+            <form className="w-full h-auto mt-5 flex flex-col items-center pl-3 pr-3 gap-5">
+                <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
+                    <label htmlFor="" className='text-colorPrin'>Email</label>
+                    <input
+                        className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                        type="text"
+                        name=""
+                        id=""
+
+                    />
+                </div>
+
+                <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
+                    <label htmlFor="" className='text-colorPrin'>Senha</label>
+                    <input
+                        className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                        type="text"
+                        name=""
+                        id=""
+
+                    />
+                </div>
+
+                <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
+                    <label htmlFor="" className='text-colorPrin'>Nome do time</label>
+                    <input
+                        className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                        type="text"
+                        name=""
+                        id=""
+
+                    />
+                </div>
+
+                <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
+                    <label htmlFor="" className='text-colorPrin'>Nome do responsável</label>
+                    <input
+                        className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                        type="text"
+                        name=""
+                        id=""
+
+                    />
+                </div>
+
+                <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
+                    <label htmlFor="" className='text-colorPrin'>Telefone</label>
+                    <input
+                        className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                        type="text"
+                        name=""
+                        id=""
+
+                    />
+                </div>
+
+                <div className='w-full h-auto flex pl-3 pr-3 gap-4'>
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Cep</label>
+                        <input
+                            className='h-[45px] w-[100%] border border-colorInput rounded-lg text-colorText pl-3'
+                            type="text"
+                            name=""
+                            id=""
+
+                        />
+                    </div>
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Número</label>
+                        <input
+                            className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3'
+                            type="text"
+                            name=""
+                            id=""
+
+                        />
+                    </div>
+
+                
+                </div>
+
+                <div className='mt-8 mb-14'>
+                     <Button label="Cadastrar" />
+
+                </div>
+
+               
+
+
+            </form>
+
+        </div>
     )
 }
