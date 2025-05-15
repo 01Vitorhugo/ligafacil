@@ -1,16 +1,21 @@
+import { useState } from 'react';
 import Logo from '../../assets/logo_site.png';
 import Button from '../../components/button';
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
 
     const testeButton = () => {
-        alert("Botão clicado");
+        
+        console.log(email + " " + senha);
+
     }
 
-    return(
+    return (
         <div className="w-full h-auto">
 
-            <section className="w-full h-auto ">
+            <section className="w-full h-auto mt-6">
                 <figure className='w-full  flex justify-center items-center'>
                     <img src={Logo} alt="Logo" className="w-1/2 max-w-[500px] max-h-[500px] mx-auto " />
                 </figure>
@@ -26,22 +31,41 @@ export default function Login() {
 
                     <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1'>
                         <label htmlFor="" className='text-colorPrin'>Email</label>
-                        <input type="text" name="" id="" className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3' />
+                        <input
+                            className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                            type="text"
+                            name=""
+                            id=""
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
 
                     <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1 mt-8'>
                         <label htmlFor="" className='text-colorPrin'>Senha</label>
-                        <input type="password" name="" id="" className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3' />
+                        <input
+                            className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                            type="password"
+                            name=""
+                            id=""
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                            
+                            />
                     </div>
 
                     <div className='w-full h-auto flex justify-center mt-8'>
-                        <Button label="Entrar" onClick={testeButton()}/>
+                        <Button label="Entrar" onClick={testeButton()} />
+                    </div>
+
+                     <div className='w-full h-auto flex justify-center mt-8'>
+                        <Button label="Criar conta nova" onClick={testeButton()} />
                     </div>
 
                 </form>
 
             </section>
 
-        </div>         
+        </div>
     )
 }

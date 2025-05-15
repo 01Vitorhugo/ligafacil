@@ -1,10 +1,12 @@
 import Login from "./pages/login"
+import RoutsPage from "./routs"
 
 function App() {
  
   return (
     <>
-    <Login />
+    <RoutsPage />
+    {/* <Login /> */}
     
     </>
    
