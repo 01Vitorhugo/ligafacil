@@ -1,26 +1,26 @@
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Footer from "../components/footer";
 import Home from "../pages/home";
+import ProtectedRoute from "../routs/protectedRouter";
+import Footer from "../components/footer";
 
-
-export default function RoutsPage() {
+export default function RoutesPage() {
     return (
-        <BrowserRouter>
-            {/* Colocar menu aqui */}
-
+        <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login/> } /> 
+                <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                
-                {/* <Route path="/produtos" element={<PageProdutos />} /> */}
-            
-                {/* <Route path="*" element={<PageNotFound/>} /> */}
+                <Route 
+                    path="/" 
+                    element={
+                        <ProtectedRoute>
+                            <Home />
+                        </ProtectedRoute>
+                    } 
+                />
             </Routes>
-
-           <Footer/>
-        </BrowserRouter>
+            <Footer />
+        </Router>
     );
 }
