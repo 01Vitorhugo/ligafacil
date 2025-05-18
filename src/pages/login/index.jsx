@@ -3,12 +3,15 @@ import Logo from '../../assets/logo_site.png';
 import Button from '../../components/button';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../database';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    console.log("Email digitado:", email);
+    const navigate = useNavigate();
+
+    // console.log("Email digitado:", email);
 
 
     async function testeButton() {
@@ -26,8 +29,12 @@ export default function Login() {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email.trim(), senha);
             console.log("Usuário logado com sucesso!", userCredential.user);
+            
+            navigate('/');
+
+
         } catch (error) {
-            console.log("Erro ao logar:", error.message);
+            alert("Email ou senha incorretos");
         }
 
     }

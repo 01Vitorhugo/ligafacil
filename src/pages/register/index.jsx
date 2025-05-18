@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState  } from "react";
+import { useNavigate } from 'react-router-dom';
 import iconSeta from "../../assets/icon_seta.png";
 import logo from "../../assets/logo_site.png";
 import Button from "../../components/button";
@@ -21,14 +22,13 @@ export default function Register() {
     const [cep, setCep] = useState("");
     const [number, setNumber] = useState("");
 
+    const navigate = useNavigate();
 
-    async function userRegister(email, password, nameTime, nameOwner, phone, cep, number) {
+    async function userRegister() {
     try {
-        // Criando usuário no Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Salvando dados extras no Firestore (sem armazenar a senha!)
         await setDoc(doc(db, "users", user.uid), {
             email: email,
             nameTime: nameTime,
@@ -39,23 +39,19 @@ export default function Register() {
         });
 
         console.log("Usuário cadastrado com sucesso!");
+        navigate("/");
+
+        
 
     } catch (error) {
-        if (error.code === "auth/weak-password") {
-             console.log("Senha muito fraca. Escolha uma senha mais forte!");
-        } else if (error.code === "auth/email-already-in-use") {
-             console.log("Este email já está cadastrado. Tente outro!");
-        } else {
-             console.log("Erro ao cadastrar usuário:", error.message);
-             
-            setEmail("");
-            setPassword("");    
-            setNameTime("");
-            setNameOwner("");
-            setPhone("");
-            setCep("");
-            setNumber("");
-        }
+        console.log("Erro ao cadastrar usuário:", error.message);
+        setCep("");
+        setNumber(""); 
+        setEmail("");
+        setPassword("");
+        setNameTime("");
+        setNameOwner("");
+        setPhone("");
     }
 }
 
@@ -63,7 +59,7 @@ export default function Register() {
         <div className="h-auto w-full">
 
             <section className="w-full h-[111px] flex justify-between items-center pl-3 pr-3">
-                <Link to="/">
+                <Link to="/login">
                     <img src={iconSeta} alt="voltar" className="w-[40px] h-[57px]" />
                 </Link>
 
@@ -172,7 +168,7 @@ export default function Register() {
                 </div>
 
                 <div className='mt-8 mb-14'>
-                     <Button label="Cadastrar" onClick={() => userRegister(email, password, nameTime, nameOwner, phone, cep, number)}/>
+                   <Button label="Cadastrar" onClick={userRegister} />
 
                 </div>
 
