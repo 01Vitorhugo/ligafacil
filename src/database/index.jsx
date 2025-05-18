@@ -1,13 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth"
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+//Conf Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAlZNaoZyYt6_2-liWyxkROmmA-1DAl73I",
+  apiKey: " AIzaSyAlZNaoZyYt6_2-liWyxkROmmA-1DAl73I",
+ 
   authDomain: "liga-facil-475ed.firebaseapp.com",
   projectId: "liga-facil-475ed",
   storageBucket: "liga-facil-475ed.firebasestorage.app",
@@ -16,6 +17,10 @@ const firebaseConfig = {
   measurementId: "G-2YR6L1VE1K"
 };
 
-// Initialize Firebase
+// 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+const db = getFirestore(app);
+ const auth = getAuth(app)
+
+export  {db, auth};
