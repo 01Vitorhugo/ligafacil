@@ -1,11 +1,63 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import iconSeta from "../../assets/icon_seta.png";
 import logo from "../../assets/logo_site.png";
 import Button from "../../components/button";
+import { db, auth } from "../../database";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc,  doc } from "firebase/firestore";
+
 
 
 
 export default function Register() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [nameTime, setNameTime] = useState("");
+    const [nameOwner, setNameOwner] = useState("");
+    const [phone, setPhone] = useState("");
+    const [cep, setCep] = useState("");
+    const [number, setNumber] = useState("");
+
+
+    async function userRegister(email, password, nameTime, nameOwner, phone, cep, number) {
+    try {
+        // Criando usuário no Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Salvando dados extras no Firestore (sem armazenar a senha!)
+        await setDoc(doc(db, "users", user.uid), {
+            email: email,
+            nameTime: nameTime,
+            nameOwner: nameOwner,
+            phone: phone,
+            cep: cep,
+            number: number
+        });
+
+        console.log("Usuário cadastrado com sucesso!");
+
+    } catch (error) {
+        if (error.code === "auth/weak-password") {
+             console.log("Senha muito fraca. Escolha uma senha mais forte!");
+        } else if (error.code === "auth/email-already-in-use") {
+             console.log("Este email já está cadastrado. Tente outro!");
+        } else {
+             console.log("Erro ao cadastrar usuário:", error.message);
+             
+            setEmail("");
+            setPassword("");    
+            setNameTime("");
+            setNameOwner("");
+            setPhone("");
+            setCep("");
+            setNumber("");
+        }
+    }
+}
 
     return (
         <div className="h-auto w-full">
@@ -19,7 +71,7 @@ export default function Register() {
             </section>
 
             <section className="w-full h-[81px]  pl-3 flex items-center border-b-1 border-colorPrinOpacity ">
-                <h1>Cadastro</h1>
+                <h1>Cadastro</h1>   
             </section>
 
             <form className="w-full h-auto mt-5 flex flex-col items-center pl-3 pr-3 gap-5">
@@ -30,6 +82,8 @@ export default function Register() {
                         type="text"
                         name=""
                         id=""
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
 
                     />
                 </div>
@@ -41,6 +95,8 @@ export default function Register() {
                         type="text"
                         name=""
                         id=""
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
 
                     />
                 </div>
@@ -52,6 +108,8 @@ export default function Register() {
                         type="text"
                         name=""
                         id=""
+                        value={nameTime}
+                        onChange={(e) => setNameTime(e.target.value)}
 
                     />
                 </div>
@@ -63,6 +121,8 @@ export default function Register() {
                         type="text"
                         name=""
                         id=""
+                        value={nameOwner}
+                        onChange={(e) => setNameOwner(e.target.value)}
 
                     />
                 </div>
@@ -74,6 +134,8 @@ export default function Register() {
                         type="text"
                         name=""
                         id=""
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
 
                     />
                 </div>
@@ -87,6 +149,8 @@ export default function Register() {
                             type="text"
                             name=""
                             id=""
+                            value={cep}
+                            onChange={(e) => setCep(e.target.value)}
 
                         />
                     </div>
@@ -98,6 +162,8 @@ export default function Register() {
                             type="text"
                             name=""
                             id=""
+                            value={number}
+                            onChange={(e) => setNumber(e.target.value)} 
 
                         />
                     </div>
@@ -106,7 +172,7 @@ export default function Register() {
                 </div>
 
                 <div className='mt-8 mb-14'>
-                     <Button label="Cadastrar" />
+                     <Button label="Cadastrar" onClick={() => userRegister(email, password, nameTime, nameOwner, phone, cep, number)}/>
 
                 </div>
 
