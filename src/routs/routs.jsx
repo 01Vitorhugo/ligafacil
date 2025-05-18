@@ -2,6 +2,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "../pages/login";
 import Register from "../pages/register";
 import Footer from "../components/footer";
+import Home from "../pages/home";
 
 
 export default function RoutsPage() {
@@ -10,7 +11,8 @@ export default function RoutsPage() {
             {/* Colocar menu aqui */}
 
             <Routes>
-                <Route path="/" element={<Login/> } /> 
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login/> } /> 
                 <Route path="/register" element={<Register />} />
                 
                 {/* <Route path="/produtos" element={<PageProdutos />} /> */}
