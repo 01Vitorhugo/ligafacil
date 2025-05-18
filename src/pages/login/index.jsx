@@ -1,14 +1,34 @@
 import { useState } from 'react';
 import Logo from '../../assets/logo_site.png';
 import Button from '../../components/button';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../database';
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const testeButton = () => {
-        
-        console.log(email + " " + senha);
+    console.log("Email digitado:", email);
+
+
+    async function testeButton() {
+
+        if (!email || email.trim() === "") {
+            console.log("Erro: O campo de email está vazio!");
+            return;
+        }
+
+        if (!senha || senha.trim() === "") {
+            console.log("Erro: O campo de senha está vazio!");
+            return;
+        }
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email.trim(), senha);
+            console.log("Usuário logado com sucesso!", userCredential.user);
+        } catch (error) {
+            console.log("Erro ao logar:", error.message);
+        }
 
     }
 
@@ -34,8 +54,6 @@ export default function Login() {
                         <input
                             className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
                             type="text"
-                            name=""
-                            id=""
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -45,23 +63,21 @@ export default function Login() {
                         <label htmlFor="" className='text-colorPrin'>Senha</label>
                         <input
                             className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                            type="password"
-                            name=""
-                            id=""
+                            type="text"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
-                            
-                            />
+
+                        />
                     </div>
 
                     <div className='w-full h-auto flex justify-center mt-8'>
-                        <Button label="Entrar" onClick={testeButton()} />
+                        <Button label="Entrar" onClick={() => testeButton()} />
                     </div>
 
                     <p className='text-colorText text-center mt-5 mb-5 text-[10px]'>OU</p>
 
-                     <div className='w-full h-auto flex justify-center mt-6 mb-30'>
-                        <Button label="Criar conta nova" onClick={testeButton()}  to="/register"/>
+                    <div className='w-full h-auto flex justify-center mt-6 mb-30'>
+                        <Button label="Criar conta nova" onClick={() => testeButton()} to="/register" />
                     </div>
 
                 </form>
