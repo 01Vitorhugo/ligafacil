@@ -14,7 +14,7 @@ export default function Login() {
     // console.log("Email digitado:", email);
 
 
-    async function testeButton() {
+    async function loginUser() {
 
         if (!email || email.trim() === "") {
             console.log("Erro: O campo de email está vazio!");
@@ -28,13 +28,14 @@ export default function Login() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email.trim(), senha);
-            console.log("Usuário logado com sucesso!", userCredential.user);
-            
+            alert("Usuário logado com sucesso!", userCredential.user);
             navigate('/');
 
 
         } catch (error) {
             alert("Email ou senha incorretos");
+            setEmail("");
+            setSenha("");
         }
 
     }
@@ -70,7 +71,7 @@ export default function Login() {
                         <label htmlFor="" className='text-colorPrin'>Senha</label>
                         <input
                             className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                            type="text"
+                            type="password"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
 
@@ -78,13 +79,13 @@ export default function Login() {
                     </div>
 
                     <div className='w-full h-auto flex justify-center mt-8'>
-                        <Button label="Entrar" onClick={() => testeButton()} />
+                        <Button label="Entrar" onClick={() => loginUser()} />
                     </div>
 
                     <p className='text-colorText text-center mt-5 mb-5 text-[10px]'>OU</p>
 
                     <div className='w-full h-auto flex justify-center mt-6 mb-30'>
-                        <Button label="Criar conta nova" onClick={() => testeButton()} to="/register" />
+                        <Button label="Criar conta nova"  to="/register" />
                     </div>
 
                 </form>
