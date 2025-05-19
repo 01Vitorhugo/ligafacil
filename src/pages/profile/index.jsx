@@ -9,7 +9,7 @@ export default function Profile() {
     const [infoUser, setInfoUser] = useState(null);
     const auth = getAuth();
 
-    console.log(infoUser);
+    // console.log(infoUser);
     useEffect(() => {
         // Espera o Firebase carregar completamente o usuário logado
         const unsubscribe = onAuthStateChanged(auth, (user) => {
