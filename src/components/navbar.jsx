@@ -2,11 +2,15 @@ import logo from '../assets/logo_site.png'
 import logo2 from '../assets/logo_icon.png'
 import iconAberto from '../assets/icon_x.png'
 import iconFechado from '../assets/icon_menu.png'
+import { useNavigate } from 'react-router-dom';
+import { signOut } from "firebase/auth";
+import { auth } from "../database"
 
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const [isAberto, setIsAberto] = useState(false);
+      const navigate = useNavigate();
 
     useEffect(() => {
         console.log(isAberto);
@@ -15,6 +19,15 @@ export default function Navbar() {
     const isMenu = () => {
         setIsAberto(!isAberto);
     };
+
+     async function logout() {
+
+        await signOut(auth);
+        // alert("Usuário deslogado com sucesso!");
+        toast.success("Usuário deslogado com sucesso!");
+
+        navigate('/login');
+    }
 
 
 
@@ -46,7 +59,11 @@ export default function Navbar() {
                         <li className="text-colorText text-[20px] mb-4">Jogos</li>
                         <li className="text-colorText text-[20px] mb-4">Campeonatos</li>
                         <li className="text-colorText text-[20px] mb-4">Contato</li>
-                        <li className="text-TextBlack text-[20px] mb-4">Sair</li>
+
+                        <button className='text-left' onClick={logout}>
+                            <li className="text-TextBlack text-[20px] mb-4">Sair</li>
+                        </button>
+                        
                     </ul>
 
                     <div className='w-full h-[40%] flex justify-center  '>
