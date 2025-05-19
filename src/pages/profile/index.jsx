@@ -60,7 +60,26 @@ export default function Profile() {
 
             <section className='w-full h-auto justify-around flex mt-10  pt-6 pb-6'>
                 <Button label="Editar Perfil" />
-                <Button label="Publicar jogo"  />
+                <Button label="Publicar jogo" />
+            </section>
+
+            <section className='w-full h-auto flex flex-col justify-center items-center mt-10  pt-6 pb-6 gap-8'>
+
+                {infoUser ? (
+                    <>
+                        <div className='w-[90%] h-[78px] flex justify-center items-center  border-1 border-colorPrinOpacity rounded-lg'>
+                            <p className='text-colorInput'>Presidente: {infoUser.nameOwner}</p>
+                        </div>
+
+                        <div className='w-[90%] h-[78px] flex justify-center items-center  border-1 border-colorPrinOpacity rounded-lg'>
+                            <p className='text-colorInput'>Local: {infoUser.cep}, {infoUser.number}</p>
+                        </div>
+                    </>
+
+                ) : (
+                    <p>Carregando dados...</p>
+                )}
+
             </section>
         </div>
     );
