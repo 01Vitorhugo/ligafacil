@@ -5,6 +5,7 @@ import Home from "../pages/home";
 import ProtectedRoute from "../routs/protectedRouter";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import Profile from "../pages/profile";
 
 export default function RoutesPage() {
     return (
@@ -12,15 +13,25 @@ export default function RoutesPage() {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route 
-                    path="/" 
+                <Route
+                    path="/"
                     element={
                         <ProtectedRoute>
-                            <Navbar/>
+                            <Navbar />
                             <Home />
                         </ProtectedRoute>
-                    } 
+                    }
                 />
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Navbar />
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+
             </Routes>
             <Footer />
         </Router>
