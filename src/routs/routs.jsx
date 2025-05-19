@@ -4,10 +4,12 @@ import Register from "../pages/register";
 import Home from "../pages/home";
 import ProtectedRoute from "../routs/protectedRouter";
 import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 export default function RoutesPage() {
     return (
         <Router>
+            <Navbar/>
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
