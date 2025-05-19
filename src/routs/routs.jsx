@@ -9,7 +9,6 @@ import Navbar from "../components/navbar";
 export default function RoutesPage() {
     return (
         <Router>
-            <Navbar/>
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -17,6 +16,7 @@ export default function RoutesPage() {
                     path="/" 
                     element={
                         <ProtectedRoute>
+                            <Navbar/>
                             <Home />
                         </ProtectedRoute>
                     } 
