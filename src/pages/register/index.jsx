@@ -79,11 +79,10 @@ export default function Register() {
                     <label htmlFor="" className='text-colorPrin'>Email</label>
                     <input
                         className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                        type="text"
-                        name=""
-                        id=""
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
 
                     />
                 </div>
@@ -92,11 +91,10 @@ export default function Register() {
                     <label htmlFor="" className='text-colorPrin'>Senha</label>
                     <input
                         className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                        type="text"
-                        name=""
-                        id=""
+                        type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
 
                     />
                 </div>
@@ -106,10 +104,9 @@ export default function Register() {
                     <input
                         className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
                         type="text"
-                        name=""
-                        id=""
                         value={nameTime}
                         onChange={(e) => setNameTime(e.target.value)}
+                        required
 
                     />
                 </div>
@@ -119,10 +116,9 @@ export default function Register() {
                     <input
                         className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
                         type="text"
-                        name=""
-                        id=""
                         value={nameOwner}
                         onChange={(e) => setNameOwner(e.target.value)}
+                        required
 
                     />
                 </div>
@@ -132,10 +128,9 @@ export default function Register() {
                     <input
                         className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
                         type="text"
-                        name=""
-                        id=""
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
+                        required
 
                     />
                 </div>
@@ -143,14 +138,13 @@ export default function Register() {
                 <div className='w-full h-auto flex pl-3 pr-3 gap-4'>
 
                     <div className='w-[50%] flex flex-col '>
-                        <label htmlFor="" className='text-colorPrin'>Cep</label>
+                        <label htmlFor="" className='text-colorPrin'>Endereço</label>
                         <input
                             className='h-[45px] w-[100%] border border-colorInput rounded-lg text-colorText pl-3'
                             type="text"
-                            name=""
-                            id=""
                             value={cep}
                             onChange={(e) => setCep(e.target.value)}
+                            required
 
                         />
                     </div>
@@ -160,15 +154,13 @@ export default function Register() {
                         <input
                             className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3'
                             type="text"
-                            name=""
-                            id=""
                             value={number}
                             onChange={(e) => setNumber(e.target.value)} 
+                            required
 
                         />
                     </div>
 
-                
                 </div>
 
                 <div className='mt-8 mb-14'>
