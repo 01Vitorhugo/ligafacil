@@ -6,15 +6,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from "../database"
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Navbar() {
     const [isAberto, setIsAberto] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        console.log(isAberto);
-    }, [isAberto]);
 
     const isMenu = () => {
         setIsAberto(!isAberto);
