@@ -5,6 +5,7 @@ import iconSeta from "../../assets/icon_seta.png";
 import logo from "../../assets/logo_site.png";
 import Button from "../../components/button";
 import { db, auth } from "../../database";
+import { toast } from "react-toastify";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc,  doc } from "firebase/firestore";
@@ -38,13 +39,16 @@ export default function Register() {
             number: number
         });
 
-        console.log("Usuário cadastrado com sucesso!");
+        // console.log("Usuário cadastrado com sucesso!");
+        toast.success("Usuário cadastrado com sucesso!");
         navigate("/");
 
         
 
     } catch (error) {
-        console.log("Erro ao cadastrar usuário:", error.message);
+        // console.log("Erro ao cadastrar usuário:", error.message);
+        toast.error("Erro ao cadastrar usuário:", error.message);
+        
         setCep("");
         setNumber(""); 
         setEmail("");

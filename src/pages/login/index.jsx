@@ -4,14 +4,13 @@ import Button from '../../components/button';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../database';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
     const navigate = useNavigate();
-
-    // console.log("Email digitado:", email);
 
 
     async function loginUser() {
@@ -28,12 +27,14 @@ export default function Login() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email.trim(), senha);
-            alert("Usuário logado com sucesso!", userCredential.user);
+            // alert("Usuário logado com sucesso!", userCredential.user);
+            toast.success("Usuário logado com sucesso!");
             navigate('/');
 
 
         } catch (error) {
-            alert("Email ou senha incorretos");
+            // alert("Email ou senha incorretos");
+            toast.error("Email ou senha incorretos");
             setEmail("");
             setSenha("");
         }
@@ -85,7 +86,7 @@ export default function Login() {
                     <p className='text-colorText text-center mt-5 mb-5 text-[10px]'>OU</p>
 
                     <div className='w-full h-auto flex justify-center mt-6 mb-30'>
-                        <Button label="Criar conta nova"  to="/register" />
+                        <Button label="Criar conta nova" to="/register" />
                     </div>
 
                 </form>

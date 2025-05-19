@@ -8,18 +8,19 @@ export default function Home() {
 
     const navigate = useNavigate();
 
-   async function logof() {
+    async function logof() {
 
-    await signOut(auth);
-    alert("Usuário deslogado com sucesso!");
-        
+        await signOut(auth);
+        // alert("Usuário deslogado com sucesso!");
+        toast.success("Usuário deslogado com sucesso!");
+
         navigate('/login');
     }
     return (
         <div className="w-full h-auto">
             <h1>Voce logou e esta na home </h1>
 
-            <Button label="logof" onClick={logof}   />
+            <Button label="logof" onClick={logof} />
         </div>
     )
 }
