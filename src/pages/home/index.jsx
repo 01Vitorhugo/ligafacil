@@ -2,14 +2,18 @@ import Button from "../../components/button";
 import { signOut } from "firebase/auth";
 import { auth } from "../../database"
 
+import { useNavigate } from 'react-router-dom';
+
 export default function Home() {
+
+    const navigate = useNavigate();
 
    async function logof() {
 
     await signOut(auth);
     alert("Usuário deslogado com sucesso!");
         
-        window.location.href = "/login";
+        navigate('/login');
     }
     return (
         <div className="w-full h-auto">
