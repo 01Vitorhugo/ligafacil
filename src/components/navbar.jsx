@@ -33,9 +33,8 @@ export default function Navbar() {
 
                 <div className="w-[50%] h-full flex items-center pl-5">
                     <Link to="/">
-                    <img src={logo} alt="logo" className='w-[55px] h-[55px]' />
+                        <img src={logo} alt="logo" className='w-[55px] h-[55px]' />
                     </Link>
-
                 </div>
 
                 <div className="w-[50%] h-full flex justify-end items-center pr-5 ">
@@ -54,10 +53,18 @@ export default function Navbar() {
                     <ul className="flex flex-col h-[60%] pt-10 w-full pl-5 gap-2 ">
 
                         <li className="text-colorText text-[20px] mb-4">
-                            <Link to="/profile">Perfil</Link>
+                            <button onClick={isMenu} className='cursor-pointer'>
+                                <Link to="/profile">Perfil</Link>
+                            </button>
+
                         </li>
 
-                        <li className="text-colorText text-[20px] mb-4">Início</li>
+                        <li className="text-colorText text-[20px] mb-4">
+                            <button onClick={isMenu} className='cursor-pointer'>
+                                <Link to="/">Início</Link>
+                            </button>
+                        </li>
+
                         <li className="text-colorText text-[20px] mb-4">Jogos</li>
                         <li className="text-colorText text-[20px] mb-4">Campeonatos</li>
                         <li className="text-colorText text-[20px] mb-4">Contato</li>
