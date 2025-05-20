@@ -51,7 +51,7 @@ export default function Login() {
             </section>
 
             <section className="w-full h-20 flex items-center p-3 border-b-1 border-colorPrinOpacity ">
-                <h1>Login</h1>
+                <h1 clasname="text-[24px]">Login</h1>
             </section>
 
             <section className='mt-10 w-full h-auto'>
