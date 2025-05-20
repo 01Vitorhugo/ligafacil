@@ -5,7 +5,7 @@ const Button = ({ label, onClick, to }) => {
     <Link to={to}>
       <button
         onClick={onClick}
-        className="w-[173px] h-[43px] rounded-lg text-colorPrin border border-colorInput flex justify-center items-center"
+        className="w-[173px] h-[43px] rounded-lg text-colorPrin border border-colorInput flex justify-center items-center cursor-pointer"
       >
         <p>{label}</p>
       </button>
