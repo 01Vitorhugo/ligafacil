@@ -59,8 +59,8 @@ export default function Profile() {
             </section>
 
             <section className='w-full h-auto justify-around flex mt-10  pt-6 pb-6'>
-                <Button label="Editar Perfil" className'cursor-pointer' />
-                <Button label="Publicar jogo" className'cursor-pointer'/>
+                <Button label="Editar Perfil" />
+                <Button label="Publicar jogo"/>
             </section>
 
             <section className='w-full h-auto flex flex-col justify-center items-center mt-10  pt-6 pb-6 gap-8'>
