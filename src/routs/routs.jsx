@@ -9,6 +9,7 @@ import Profile from "../pages/profile";
 import Championship from "../pages/championship";
 import Contact from "../pages/contact";
 import About from "../pages/about";
+import PublicGame from "../pages/publicGame";
 
 export default function RoutesPage() {
     return (
@@ -31,6 +32,16 @@ export default function RoutesPage() {
                         <ProtectedRoute>
                             <Navbar />
                             <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+                
+                <Route
+                    path="/profile/publicgame"
+                    element={
+                        <ProtectedRoute>
+                            <Navbar />
+                            <PublicGame />
                         </ProtectedRoute>
                     }
                 />
@@ -64,6 +75,7 @@ export default function RoutesPage() {
                         </ProtectedRoute>
                     }
                 />
+
 
             </Routes>
             <Footer />
