@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="navbar w-full h-[78px] bg-colorPrin flex">
+            <nav className="navbar w-full h-[78px] bg-colorPrin flex pl-3 ">
 
                 <div className="w-[50%] h-full flex items-center pl-5">
                     <Link to="/">
@@ -48,7 +48,7 @@ export default function Navbar() {
             </nav>
 
             {isAberto === true ? (
-                <div className="w-full h-[100vh] bg-colorSec flex flex-col items-center  bg-colorPrinOpacity">
+                <div className="w-full h-[100vh] bg-colorSec flex flex-col items-center  bg-colorPrin border-t-1 border-colorText">
 
                     <ul className="flex flex-col h-[60%] pt-10 w-full pl-5 gap-2 ">
 
@@ -90,7 +90,7 @@ export default function Navbar() {
                         </li>
                     </ul>
 
-                    <div className='w-full h-[40%] flex justify-center  '>
+                    <div className='w-full h-[40%] flex justify-center'>
                         <img src={logo2} alt="logo" className='w-[150px] h-[150px]' />
                     </div>
                 </div>
