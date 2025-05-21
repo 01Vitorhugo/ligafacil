@@ -1,4 +1,4 @@
-import img from '../../assets/logo_branca.png';
+import img from '../../assets/default.png';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../database';
 import { useEffect, useState } from 'react';
@@ -43,7 +43,7 @@ export default function Profile() {
             </section>
 
             <figure className="w-full h-auto flex justify-center items-center mt-10">
-                <img src={img} alt="escudo do time" className='w-[173px] h-[173px]' />
+                <img src={img} alt="escudo do time" className='w-[150px] h-[150px]' />
             </figure>
 
             <section className='w-full h-auto justify-center flex mt-10'>
