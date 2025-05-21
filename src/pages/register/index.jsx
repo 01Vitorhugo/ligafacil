@@ -80,7 +80,7 @@ export default function Register() {
             </section>
 
             <section className="w-full h-[81px]  pl-3 flex items-center border-b-1 border-colorPrinOpacity ">
-                <h1>Cadastro</h1>
+                <h1 className='text-[40px]'>Cadastro</h1>
             </section>
 
             <form className="w-full h-auto mt-5 flex flex-col items-center pl-3 pr-3 gap-5">
