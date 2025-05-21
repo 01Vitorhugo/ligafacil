@@ -6,6 +6,7 @@ import ProtectedRoute from "../routs/protectedRouter";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Profile from "../pages/profile";
+import Championship from "../pages/championship";
 
 export default function RoutesPage() {
     return (
@@ -28,6 +29,16 @@ export default function RoutesPage() {
                         <ProtectedRoute>
                             <Navbar />
                             <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/championship"
+                    element={
+                        <ProtectedRoute>
+                            <Navbar />
+                            <Championship />
                         </ProtectedRoute>
                     }
                 />

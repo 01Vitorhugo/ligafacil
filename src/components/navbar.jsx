@@ -66,7 +66,13 @@ export default function Navbar() {
                         </li>
 
                         <li className="text-colorText text-[20px] mb-4">Jogos</li>
-                        <li className="text-colorText text-[20px] mb-4">Campeonatos</li>
+                        
+                        <li className="text-colorText text-[20px] mb-4">
+                            <button onClick={isMenu} className='cursor-pointer'>
+                                <Link to="/championship">Campeonatos</Link>
+                            </button>
+                        </li>
+
                         <li className="text-colorText text-[20px] mb-4">Contato</li>
 
                         <li className="text-TextBlack text-[20px] mb-4 w-auto">
