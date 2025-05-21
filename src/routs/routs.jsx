@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import Profile from "../pages/profile";
 import Championship from "../pages/championship";
+import Contact from "../pages/contact";
 
 export default function RoutesPage() {
     return (
@@ -39,6 +40,16 @@ export default function RoutesPage() {
                         <ProtectedRoute>
                             <Navbar />
                             <Championship />
+                        </ProtectedRoute>
+                    }
+                />
+
+                  <Route
+                    path="/contact"
+                    element={
+                        <ProtectedRoute>
+                            <Navbar />
+                            <Contact />
                         </ProtectedRoute>
                     }
                 />
