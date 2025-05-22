@@ -29,6 +29,7 @@ export default function Home() {
         try {
             const gamesRef = collection(db, "users", userId, "games");
             const snapshot = await getDocs(gamesRef);
+            //console.log(snapshot)
             const gamesData = snapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()
