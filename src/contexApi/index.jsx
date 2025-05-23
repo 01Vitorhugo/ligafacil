@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { db } from "../database";
-import { doc, getDocs, getDoc, collection } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getDocs, collection } from "firebase/firestore";
+// import { getAuth } from "firebase/auth";
 
 
 
@@ -9,64 +9,60 @@ import { getAuth } from "firebase/auth";
 export const Contextapi = createContext();
 
 export const MyProvider = ({ children }) => {
-    const [hoursGame, setHoursgame] = useState('');
-    const [locationGame, setLocationGame] = useState('');
-    const [streetLocation, setStreetLocation] = useState('');
-    const [numberLocation, setNumberLocation] = useState('');
-    const [dateGame, setDateGame] = useState('');
-    const [statusGame, setStatusGame] = useState('');
-    const [nameTime, setNameTime] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [nameOwner, setNameOwner] = useState('');
+    const [gamesDatas, setGamesDatas] = useState([])
 
 
     const SearchGames = async () => {
-        const querySnapshot = await getDocs(collection(db, "games")); // Obtendo todos os documentos da coleção
-        setHoursgame(querySnapshot.docs[0].data().horario);
-        setDateGame(querySnapshot.docs[0].data().data);
-        setStatusGame(querySnapshot.docs[0].data().status);
+        const querySnapshot = await getDocs(collection(db, "games"));
+        const gamesData = querySnapshot.docs.map(doc => doc.data());
 
+        // setHoursgame(gamesData.map(game => game.horario));
+        // setDateGame(gamesData.map(game => game.data));
+        // setStatusGame(gamesData.map(game => game.status));
+
+        // console.log(gamesData);
+        setGamesDatas(gamesData)
     };
+
     SearchGames();
 
-    const searchUser = async () => {
-        const auth = getAuth();
-        const usuarioLogado = auth.currentUser;
+    // const searchUser = async () => {
+    //     const auth = getAuth();
+    //     const usuarioLogado = auth.currentUser;
 
-        if (usuarioLogado) {
-            try {
-                const docRef = doc(db, "users", usuarioLogado.uid); // Busca pelo ID do usuário logado
-                const docSnap = await getDoc(docRef);
+    //     if (usuarioLogado) {
+    //         try {
+    //             const docRef = doc(db, "users", usuarioLogado.uid); // Busca pelo ID do usuário logado
+    //             const docSnap = await getDoc(docRef);
 
-                if (docSnap.exists()) {
-                    // console.log("Dados do usuário:", docSnap.data().cep);
-                    setNameTime(docSnap.data().nameTime);
-                    setEmail(docSnap.data().email);
-                    setPhone(docSnap.data().phone);
-                    setNameOwner(docSnap.data().nameOwner);
-                    setStreetLocation(docSnap.data().cep);
-                    setLocationGame(docSnap.data().location);
-                    setNumberLocation(docSnap.data().number);
-                    
+    //             if (docSnap.exists()) {
+    //                 // console.log("Dados do usuário:", docSnap.data().cep);
+    //                 setNameTime(docSnap.data().nameTime);
+    //                 setEmail(docSnap.data().email);
+    //                 setPhone(docSnap.data().phone);
+    //                 setNameOwner(docSnap.data().nameOwner);
+    //                 setStreetLocation(docSnap.data().cep);
+    //                 setLocationGame(docSnap.data().location);
+    //                 setNumberLocation(docSnap.data().number);
 
-                } else {
-                    console.log("Usuário não encontrado no banco!");
-                }
-            } catch (error) {
-                console.error("Erro ao buscar usuário:", error);
-            }
-        } else {
-            console.log("Nenhum usuário logado.");
-        }
-    };
 
-    searchUser();
+    //             } else {
+    //                 console.log("Usuário não encontrado no banco!");
+    //             }
+    //         } catch (error) {
+    //             console.error("Erro ao buscar usuário:", error);
+    //         }
+    //     } else {
+    //         console.log("Nenhum usuário logado.");
+    //     }
+    // };
 
-    
+    // searchUser();
+
+
 
     return (
-        <Contextapi.Provider value={{ hoursGame, locationGame, numberLocation, dateGame, statusGame, nameTime, email, phone, nameOwner, streetLocation }}>
+        <Contextapi.Provider value={{  gamesDatas }}>
             {children}
         </Contextapi.Provider>
     );
