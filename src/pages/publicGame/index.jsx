@@ -9,7 +9,6 @@ export default function PublicGame() {
     const [horario, setHorario] = useState("");
 
     const user = auth.currentUser;
-    const uid = user ? user.uid : null;
 
 
 
@@ -28,13 +27,12 @@ export default function PublicGame() {
 
 
 
-        const gameRef = doc(db, "users", user.uid, "games", "gameId");
+        const gameRef = doc(db, "games", user.uid);
 
         await setDoc(gameRef, {
             data: data,
             horario: horario,
             status: "Disponível",
-            userId: user.uid, // Guardando o UID do usuário
         });
 
     }
@@ -54,9 +52,10 @@ export default function PublicGame() {
                         <label htmlFor="" className='text-colorPrin'>Data</label>
                         <input
                             className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                            type="text"
+                            type="date"
                             value={data}
                             onChange={(e) => setData(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -64,9 +63,10 @@ export default function PublicGame() {
                         <label htmlFor="" className='text-colorPrin'>Horário</label>
                         <input
                             className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                            type="text"
+                            type="time"
                             value={horario}
                             onChange={(e) => setHorario(e.target.value)}
+                            required
 
                         />
                     </div>
