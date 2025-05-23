@@ -2,10 +2,10 @@ import photo from '../assets/default.png'
 import logoIcon from '../assets/logo_icon.png';
 import Button from './button';
 
-export default function CardGame({ horario, data, endereco, nomeTime, rua, numero, statusGame }) {
+export default function CardGame({ horario, data, endereco, nomeTime, rua, numero }) {
 
     return (
-        <div className="w-full h-auto flex flex-col items-center justify-center ">
+        <div className="w-full h-auto flex flex-col items-center justify-center mt-15 ">
 
             <div className="bg-cover bg-center w-[90%] h-[381px] rounded-lg shadow-[5px_5px_10px_rgba(255,255,255,0.5)] relative  overflow-hidden flex flex-col ">
                 <div
