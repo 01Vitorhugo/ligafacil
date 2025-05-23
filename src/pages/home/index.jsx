@@ -5,15 +5,17 @@ import { Contextapi } from "../../contexApi";
 
 export default function Home() {
     
-    const { estado, setEstado } = useContext(Contextapi);
+    const {nameTime, streetLocation, dateGame, hoursGame, statusGame, locationGame, numberLocation } = useContext(Contextapi);
 
-     
+
     return (
         <div className="w-full h-auto">
               <figure className="h-[252px]">
                 <img src={banner} alt="banner home" />
                 
               </figure>
+
+              <CardGame endereco={locationGame} data={dateGame} horario={hoursGame} nomeTime={nameTime}  rua={streetLocation} numero={numberLocation}/>
 
         </div>
     );
