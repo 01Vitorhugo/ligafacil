@@ -1,19 +1,23 @@
 import { useState } from "react";
 import Button from "../../components/button";
 import { db, auth } from "../../database";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 
 export default function PublicGame() {
     const [data, setData] = useState("");
     const [horario, setHorario] = useState("");
+    const [bairro, setBairro] = useState("");
 
-    const user = auth.currentUser;
-
+    const [nomeTime, setNomeTime] = useState("");
+    const [numeroRua, setNumeroRua] = useState("");
+    const [rua, setRua] = useState("");
 
 
 
     const publicGame = async () => {
+
+
         if (!data || !horario) {
             console.log("Preencha todos os campos!");
             return;
@@ -25,19 +29,30 @@ export default function PublicGame() {
             return;
         }
 
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+            console.log("Dados do usuário não encontrados!");
+            return;
+        }
+
+        const userData = userSnap.data();
+
 
 
         const gameRef = doc(db, "games", user.uid);
-
         await setDoc(gameRef, {
             data: data,
             horario: horario,
+            bairro: bairro,
             status: "Disponível",
+            nomeTime: userData.nameTime,
+            rua: userData.cep,
+            numeroEndereco: userData.number,
         });
 
     }
-
-
 
     return (
         <div className="w-full h-auto">
@@ -70,6 +85,50 @@ export default function PublicGame() {
 
                         />
                     </div>
+
+                    <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1 mt-8'>
+                        <label htmlFor="" className='text-colorPrin'>Bairro</label>
+                        <input
+                            className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
+                            type="text"
+                            value={bairro}
+                            onChange={(e) => setBairro(e.target.value)}
+                            required
+
+                        />
+                    </div>
+
+                    {/* Inputs para pegar valor sem o user ver */}
+
+
+                    <input
+                        className=''
+                        type="text"
+                        value={nomeTime}
+                        onChange={(e) => setNomeTime(e.target.value)}
+                        required
+
+                    />
+
+                    <input
+                        className=''
+                        type="text"
+                        value={numeroRua}
+                        onChange={(e) => setNumeroRua(e.target.value)}
+                        required
+
+                    />
+
+                    <input
+                        className=''
+                        type="text"
+                        value={rua}
+                        onChange={(e) => setRua(e.target.value)}
+                        required
+
+                    />
+
+
 
                     <div className='w-full h-auto flex justify-center mt-6 mb-30'>
                         <Button label="Publicar jogo" onClick={publicGame} />
