@@ -65,7 +65,11 @@ export default function Navbar() {
                             </button>
                         </li>
 
-                        <li className="text-colorText text-[20px] mb-4">Jogos</li>
+                        <li className="text-colorText text-[20px] mb-4">
+                             <button onClick={isMenu} className='cursor-pointer'>
+                                <Link to="/games">Jogos</Link>
+                            </button>
+                            </li>
 
                         <li className="text-colorText text-[20px] mb-4">
                             <button onClick={isMenu} className='cursor-pointer'>
