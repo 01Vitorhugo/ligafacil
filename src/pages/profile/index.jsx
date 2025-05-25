@@ -71,8 +71,9 @@ export default function Profile() {
                             <p className='text-colorInput'>Presidente: {infoUser.nameOwner}</p>
                         </div>
 
-                        <div className='w-[90%] h-[78px] flex justify-center items-center  border-1 border-colorPrinOpacity rounded-lg'>
-                            <p className='text-colorInput'>Local: {infoUser.cep}, {infoUser.number}</p>
+                        <div className='w-[90%] h-[78px] flex flex-col justify-center items-center  border-1 border-colorPrinOpacity rounded-lg'>
+                            <p className='text-colorInput'>Local: {infoUser.logradouroCep}, {infoUser.number}</p>
+                            <p className='text-colorInput'>{infoUser.bairroCep}, {infoUser.locationCep} - {infoUser.ufCep}</p>
                         </div>
                     </>
 
