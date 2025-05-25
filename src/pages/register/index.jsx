@@ -27,8 +27,6 @@ export default function Register() {
     const [bairro, setBairro] = useState("");
     const [logradouro, setLogradouro] = useState("");
 
-    const [errorCep, setErrorCep] = useState(false);
-
 
     const navigate = useNavigate();
 
@@ -38,7 +36,7 @@ export default function Register() {
         console.log(data);
 
         if (data.erro) {
-            setErrorCep(true);
+            console.log(data.erro)
 
             setBairro("");
             setLocalidade("");
@@ -52,7 +50,6 @@ export default function Register() {
             setLogradouro(data.logradouro);
 
         }
-        // console.log(errorCep)
     }
     buscarEndereco(cep);
     
@@ -238,7 +235,7 @@ export default function Register() {
                             value={logradouro}
                             onChange={(e) => setLogradouro(e.target.value)}
                             required
-                            disable
+        
 
                         />
                     </div>
@@ -253,7 +250,7 @@ export default function Register() {
                             value={bairro}
                             onChange={(e) => setBairro(e.target.value)}
                             required
-                            disable
+            
 
                         />
                     </div>
@@ -274,7 +271,7 @@ export default function Register() {
                             value={localidade}
                             onChange={(e) => setLocalidade(e.target.value)}
                             required
-                            disable
+
 
                         />
                     </div>
@@ -289,7 +286,6 @@ export default function Register() {
                             value={uf}
                             onChange={(e) => setUf(e.target.value)}
                             required
-                            disabled
 
                         />
                     </div>
