@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../../components/button";
 import { db, auth } from "../../database";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 
 export default function PublicGame() {
@@ -12,6 +13,8 @@ export default function PublicGame() {
     const [nomeTime, setNomeTime] = useState("");
     const [numeroRua, setNumeroRua] = useState("");
     const [rua, setRua] = useState("");
+
+      const navigate = useNavigate();
 
 
 
@@ -41,16 +44,20 @@ export default function PublicGame() {
 
 
 
+
         const gameRef = doc(db, "games", user.uid);
         await setDoc(gameRef, {
             data: data,
             horario: horario,
-            bairro: bairro,
+            bairro: userData.bairroCep,
             status: "Disponível",
             nomeTime: userData.nameTime,
-            rua: userData.cep,
+            rua: userData.logradouroCep,
             numeroEndereco: userData.number,
+            cep: userData.cep
         });
+
+        navigate('/profile');
 
     }
 
@@ -86,18 +93,6 @@ export default function PublicGame() {
                         />
                     </div>
 
-                    <div className='w-full h-auto flex flex-col pl-3 pr-3 gap-1 mt-8'>
-                        <label htmlFor="" className='text-colorPrin'>Bairro</label>
-                        <input
-                            className='h-[45px] border border-colorInput rounded-lg text-colorText pl-3'
-                            type="text"
-                            value={bairro}
-                            onChange={(e) => setBairro(e.target.value)}
-                            required
-
-                        />
-                    </div>
-
                     {/* Inputs para pegar valor sem o user ver */}
 
 
@@ -124,6 +119,15 @@ export default function PublicGame() {
                         type="text"
                         value={rua}
                         onChange={(e) => setRua(e.target.value)}
+                        required
+
+                    />
+
+                    <input
+                        className=''
+                        type="text"
+                        value={bairro}
+                        onChange={(e) => setBairro(e.target.value)}
                         required
 
                     />
