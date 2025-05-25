@@ -52,13 +52,10 @@ export default function Register() {
             setLogradouro(data.logradouro);
 
         }
-        console.log(errorCep)
-
-
-
+        // console.log(errorCep)
     }
-
     buscarEndereco(cep);
+    
 
     async function userRegister() {
         try {
