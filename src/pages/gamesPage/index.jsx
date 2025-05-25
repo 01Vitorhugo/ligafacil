@@ -21,6 +21,7 @@ export default function GamePage() {
                     rua={game.rua}
                     numero={game.numeroEndereco}
                     statusGame={game.status}
+                    cep={game.cep}
                 />
             ))}
         </section>
