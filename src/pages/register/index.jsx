@@ -6,7 +6,6 @@ import logo from "../../assets/logo_site.png";
 import Button from "../../components/button";
 import { db, auth } from "../../database";
 import { toast } from "react-toastify";
-
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 
@@ -23,7 +22,43 @@ export default function Register() {
     const [cep, setCep] = useState("");
     const [number, setNumber] = useState("");
 
+    const [uf, setUf] = useState("");
+    const [localidade, setLocalidade] = useState("");
+    const [bairro, setBairro] = useState("");
+    const [logradouro, setLogradouro] = useState("");
+
+    const [errorCep, setErrorCep] = useState(false);
+
+
     const navigate = useNavigate();
+
+    async function buscarEndereco(cep) {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+        console.log(data);
+
+        if (data.erro) {
+            setErrorCep(true);
+
+            setBairro("");
+            setLocalidade("");
+            setUf("");
+            setLogradouro("");
+
+        } else {
+            setBairro(data.bairro);
+            setLocalidade(data.localidade);
+            setUf(data.uf);
+            setLogradouro(data.logradouro);
+
+        }
+        console.log(errorCep)
+
+
+
+    }
+
+    buscarEndereco(cep);
 
     async function userRegister() {
         try {
@@ -36,9 +71,13 @@ export default function Register() {
                 nameOwner: nameOwner,
                 phone: phone,
                 cep: cep,
-                number: number
+                number: number,
+                bairroCep: bairro,
+                locationCep: localidade,
+                logradouroCep: logradouro,
+                ufCep: uf
             });
-            
+
             toast.success("Usuário cadastrado com sucesso!");
             navigate("/profile");
 
@@ -81,7 +120,7 @@ export default function Register() {
 
             <section className="w-full h-[81px]  pl-3 flex items-center border-b-1 border-colorPrinOpacity ">
 
-                <h1  className='text-[40px]'>Cadastro</h1>
+                <h1 className='text-[40px]'>Cadastro</h1>
             </section>
 
             <form className="w-full h-auto mt-5 flex flex-col items-center pl-3 pr-3 gap-5">
@@ -155,10 +194,12 @@ export default function Register() {
                     />
                 </div>
 
+
+                {/* Novos inputs para funcionalidades */}
                 <div className='w-full h-auto flex pl-3 pr-3 gap-4'>
 
                     <div className='w-[50%] flex flex-col '>
-                        <label htmlFor="" className='text-colorPrin'>Endereço</label>
+                        <label htmlFor="" className='text-colorPrin'>Cep</label>
                         <input
                             className='h-[45px] w-[100%] border border-colorInput rounded-lg text-colorText pl-3'
                             type="text"
@@ -187,6 +228,83 @@ export default function Register() {
 
 
                 </div>
+
+                <div className='w-full h-auto flex pl-3 pr-3 gap-4'>
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Logradouro</label>
+                        <input
+                            className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3 cursor-no-drop'
+                            type="text"
+                            name=""
+                            id=""
+                            value={logradouro}
+                            onChange={(e) => setLogradouro(e.target.value)}
+                            required
+                            disable
+
+                        />
+                    </div>
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Bairro</label>
+                        <input
+                            className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3 cursor-no-drop'
+                            type="text"
+                            name=""
+                            id=""
+                            value={bairro}
+                            onChange={(e) => setBairro(e.target.value)}
+                            required
+                            disable
+
+                        />
+                    </div>
+
+
+                </div>
+
+                <div className='w-full h-auto flex pl-3 pr-3 gap-4'>
+
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Localidade</label>
+                        <input
+                            className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3 cursor-no-drop'
+                            type="text"
+                            name=""
+                            id=""
+                            value={localidade}
+                            onChange={(e) => setLocalidade(e.target.value)}
+                            required
+                            disable
+
+                        />
+                    </div>
+
+                    <div className='w-[50%] flex flex-col '>
+                        <label htmlFor="" className='text-colorPrin'>Uf</label>
+                        <input
+                            className='h-[45px] w-[100%]  border border-colorInput rounded-lg text-colorText pl-3 cursor-no-drop'
+                            type="text"
+                            name=""
+                            id=""
+                            value={uf}
+                            onChange={(e) => setUf(e.target.value)}
+                            required
+                            disabled
+
+                        />
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
 
                 <div className='mt-8 mb-14'>
                     <Button label="Cadastrar" onClick={userRegister} />
