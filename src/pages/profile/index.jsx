@@ -1,26 +1,34 @@
 import img from '../../assets/default.png';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../database';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Button from '../../components/button';
+import { Contextapi } from "../../contexApi";
+import CardGame from '../../components/cardgame';
 
 export default function Profile() {
     const [infoUser, setInfoUser] = useState(null);
     const auth = getAuth();
 
-    // console.log(infoUser);
+   const { gamesDatas = [] } = useContext(Contextapi);
+
+    const gameUser = (gamesDatas && infoUser)
+        ? gamesDatas.filter(game => infoUser && game.nomeTime === infoUser.nameTime)
+        : [];
+
+
+
+
     useEffect(() => {
-        // Espera o Firebase carregar completamente o usuário logado
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                fetchUserData(user.uid);
-            }
-        });
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user && !infoUser) { // Só busca se infoUser ainda for null
+            fetchUserData(user.uid);
+        }
+    });
 
-        return () => unsubscribe(); // Limpa a subscrição ao desmontar o componente
-    }, []);
-
+    return () => unsubscribe();
+}, [infoUser]); // Só chama a API se infoUser for undefined
     async function fetchUserData(uid) {
         try {
             const userRef = doc(db, "users", uid);
@@ -89,6 +97,34 @@ export default function Profile() {
                     </>
 
                 )}
+
+            </section>
+
+            <section className='h-auto p-3'>
+                <div>
+                    <h2 className='text-2xl'>Meus jogos</h2>
+                </div>
+
+                <div className='h-auto mt-7'>
+
+                    {gameUser && gameUser.length > 0 ? (
+                        gameUser.map((game, index) => (
+                            <CardGame
+                                key={index}
+                                endereco={game.bairro}
+                                data={game.data}
+                                horario={game.horario}
+                                nomeTime={game.nomeTime}
+                                rua={game.rua}
+                                numero={game.numeroEndereco}
+                                statusGame={game.status}
+                                cep={game.cep}
+                            />
+                        ))
+                    ) : (
+                        <p className='text-colorText text-center'>0 jogos disponíveis</p>
+                    )}
+                </div>
 
             </section>
         </div>
