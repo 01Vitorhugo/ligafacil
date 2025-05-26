@@ -119,6 +119,7 @@ export default function Profile() {
                                 numero={game.numeroEndereco}
                                 statusGame={game.status}
                                 cep={game.cep}
+                              teste='Excluir jogo'
                             />
                         ))
                     ) : (
