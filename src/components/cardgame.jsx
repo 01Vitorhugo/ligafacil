@@ -2,7 +2,7 @@ import photo from '../assets/default.png'
 import logoIcon from '../assets/logo_icon.png';
 import Button from './button';
 
-export default function CardGame({ horario, data, endereco, nomeTime, rua, numero, cep}) {
+export default function CardGame({ horario, data, endereco, nomeTime, rua, numero, cep, teste}) {
 
     return (
         <div className="w-full h-auto flex flex-col items-center justify-center mt-15 ">
@@ -39,7 +39,7 @@ export default function CardGame({ horario, data, endereco, nomeTime, rua, numer
                 </section>
 
                 <div className='h-auto flex items-center justify-center p-6'>
-                    <Button label='Disponível' />
+                    <Button label={teste} />
                 </div>
                 
             </div>
