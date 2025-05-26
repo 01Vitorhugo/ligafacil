@@ -123,7 +123,7 @@ export default function Profile() {
                             />
                         ))
                     ) : (
-                        <p className='text-colorText text-center'>0 jogos disponíveis</p>
+                        <p className='text-colorText text-center'>0 jogos publicados</p>
                     )}
                 </div>
 
