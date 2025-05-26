@@ -22,7 +22,7 @@ export default function GamePage() {
                     numero={game.numeroEndereco}
                     statusGame={game.status}
                     cep={game.cep}
-                teste='Disponível'
+                teste='Aceitar'
                 />
             ))}
         </section>
