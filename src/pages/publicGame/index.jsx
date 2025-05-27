@@ -3,6 +3,8 @@ import Button from "../../components/button";
 import { db, auth } from "../../database";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 
 export default function PublicGame() {
