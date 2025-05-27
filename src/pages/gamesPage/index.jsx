@@ -13,10 +13,10 @@ export default function GamePage() {
             const jogoDoUsuario = gamesDatas.find(game => game.nomeTime.trim() === user.nameTime.trim());
 
             if (jogoDoUsuario) {
-                console.log('Tem algo');
+                // console.log('Tem algo');
                 setPhone(user.phone);
             } else {
-                console.log('Não tem');
+                // console.log('Não tem');
             }
         }
     }, [gamesDatas, user]);
@@ -46,10 +46,14 @@ export default function GamePage() {
                     />
 
                     <div className='h-auto flex items-center justify-center p-6'>
-                        <Button
-                            label="Aceitar Jogo"
-                            onClick={() => window.open(`https://wa.me/5511995216604?text=Olá,%20eu%20aceito%20jogar%20com%20você!`, "_blank")}
-                        />
+                       <Button 
+    label="Aceitar Jogo" 
+    onClick={() => window.open(
+        `https://wa.me/5511995216604?text=🔥 Olá! Encontrei seu time no site Liga Fácil e quero jogar. Vamos nessa?%0A
+        🏆 Time: ${game.nomeTime}%0A
+        🕒 Horário: ${game.horario}%0A
+        📍 Local: ${game.rua}, ${game.numeroEndereco} - ${game.bairro}, CEP: ${game.cep}`, "_blank")}
+ />
                     </div>
                 </>
 
