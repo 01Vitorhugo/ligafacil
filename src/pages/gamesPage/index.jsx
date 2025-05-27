@@ -1,9 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Contextapi } from "../../contexApi";
 import CardGame from "../../components/cardgame";
+import Button from "../../components/button";
+import bannerCamp from "../../assets/breveCamp.png"
 
 export default function GamePage() {
-    const { gamesDatas } = useContext(Contextapi);
+    const { gamesDatas, user } = useContext(Contextapi);
+    const [phone, setPhone] = useState(null);
+
+    useEffect(() => {
+        if (user && user.nameTime && gamesDatas.length > 0) {
+            const jogoDoUsuario = gamesDatas.find(game => game.nomeTime.trim() === user.nameTime.trim());
+
+            if (jogoDoUsuario) {
+                console.log('Tem algo');
+                setPhone(user.phone);
+            } else {
+                console.log('Não tem');
+            }
+        }
+    }, [gamesDatas, user]);
+
+    console.log(phone)
+
 
     return (
         <section className="w-full h-auto">
@@ -12,19 +31,35 @@ export default function GamePage() {
             </section>
 
             {gamesDatas.map((game, index) => (
-                <CardGame
-                    key={index}
-                    endereco={game.bairro}
-                    data={game.data}
-                    horario={game.horario}
-                    nomeTime={game.nomeTime}
-                    rua={game.rua}
-                    numero={game.numeroEndereco}
-                    statusGame={game.status}
-                    cep={game.cep}
-                teste='Aceitar'
-                />
+                <>
+                    <CardGame
+                        key={index}
+                        endereco={game.bairro}
+                        data={game.data}
+                        horario={game.horario}
+                        nomeTime={game.nomeTime}
+                        rua={game.rua}
+                        numero={game.numeroEndereco}
+                        statusGame={game.status}
+                        cep={game.cep}
+
+                    />
+
+                    <div className='h-auto flex items-center justify-center p-6'>
+                        <Button
+                            label="Aceitar Jogo"
+                            onClick={() => window.open(`https://wa.me/${user.phone}?text=Olá,%20eu%20aceito%20jogar%20com%20você!`, "_blank")}
+                        />
+                    </div>
+                </>
+
             ))}
+
+            <figure className="h-[200px] mt-10">
+                <img src={bannerCamp} alt="Banner breve campeonato" />
+            </figure>
         </section>
+
+
     )
 }
