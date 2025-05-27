@@ -1,5 +1,6 @@
 import img from '../../assets/default.png';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { db } from '../../database';
 import { useEffect, useState, useContext } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -9,9 +10,10 @@ import CardGame from '../../components/cardgame';
 
 export default function Profile() {
     const [infoUser, setInfoUser] = useState(null);
+    const [gameDelete, setGameDelete] = useState()
     const auth = getAuth();
 
-   const { gamesDatas = [] } = useContext(Contextapi);
+    const { gamesDatas = [] } = useContext(Contextapi);
 
     const gameUser = (gamesDatas && infoUser)
         ? gamesDatas.filter(game => infoUser && game.nomeTime === infoUser.nameTime)
@@ -21,14 +23,18 @@ export default function Profile() {
 
 
     useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user && !infoUser) { // Só busca se infoUser ainda for null
-            fetchUserData(user.uid);
-        }
-    });
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user && !infoUser) { // Só busca se infoUser ainda for null
+                fetchUserData(user.uid);
+                setGameDelete(user.uid)
 
-    return () => unsubscribe();
-}, [infoUser]); // Só chama a API se infoUser for undefined
+            }
+        });
+
+        return () => unsubscribe();
+    }, [infoUser]); // Só chama a API se infoUser for undefined
+
+
     async function fetchUserData(uid) {
         try {
             const userRef = doc(db, "users", uid);
@@ -43,6 +49,28 @@ export default function Profile() {
             console.error("Erro ao buscar dados do usuário:", error);
         }
     }
+
+    async function deleteGame(gameDelete) {
+        if (!gameDelete) {
+            console.error("ID do jogo não encontrado!");
+            return;
+        }
+
+        console.log(`Tentando excluir o jogo com ID: ${gameDelete}`);
+
+        try {
+            const gameRef = doc(db, "games", gameDelete);
+            await deleteDoc(gameRef);
+            // console.log("Jogo excluído com sucesso!");
+             toast.success("Jogo excluído com sucesso!");
+        } catch (error) {
+            // console.error("Erro ao excluir jogo:", error);
+             toast.error("Erro ao excluir jogo!");
+        }
+    }
+
+
+
 
     return (
         <div className="w-full h-auto">
@@ -109,18 +137,27 @@ export default function Profile() {
 
                     {gameUser && gameUser.length > 0 ? (
                         gameUser.map((game, index) => (
-                            <CardGame
-                                key={index}
-                                endereco={game.bairro}
-                                data={game.data}
-                                horario={game.horario}
-                                nomeTime={game.nomeTime}
-                                rua={game.rua}
-                                numero={game.numeroEndereco}
-                                statusGame={game.status}
-                                cep={game.cep}
-                              teste='Excluir jogo'
-                            />
+                            <>
+                                <CardGame
+                                    key={index}
+                                    endereco={game.bairro}
+                                    data={game.data}
+                                    horario={game.horario}
+                                    nomeTime={game.nomeTime}
+                                    rua={game.rua}
+                                    numero={game.numeroEndereco}
+                                    statusGame={game.status}
+                                    cep={game.cep}
+                                    />
+                                    
+                                    <div className='h-auto flex items-center justify-center p-6'>
+                                        <Button label="Excluir Jogo" onClick={() => deleteGame(gameDelete)} />
+                                    </div>
+
+
+
+                            </>
+
                         ))
                     ) : (
                         <p className='text-colorText text-center'>0 jogos publicados</p>
