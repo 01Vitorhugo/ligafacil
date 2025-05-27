@@ -48,7 +48,7 @@ export default function GamePage() {
                     <div className='h-auto flex items-center justify-center p-6'>
                         <Button
                             label="Aceitar Jogo"
-                            onClick={() => window.open(`https://wa.me/${user.phone}?text=Olá,%20eu%20aceito%20jogar%20com%20você!`, "_blank")}
+                            onClick={() => window.open(`https://wa.me/5511995216604?text=Olá,%20eu%20aceito%20jogar%20com%20você!`, "_blank")}
                         />
                     </div>
                 </>
