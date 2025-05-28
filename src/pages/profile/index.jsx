@@ -95,8 +95,8 @@ export default function Profile() {
             </section>
 
             <section className='w-full h-auto justify-around flex mt-10  pt-6 pb-6'>
-                <Button label="Editar Perfil" />
-                <Button label="Publicar jogo" to="/profile/publicgame" />
+                <Button label="Editar Perfil" to="/editprofile" />
+                <Button label="Publicar jogo" to="/publicgame" />
             </section>
 
             <section className='w-full h-auto flex flex-col justify-center items-center mt-10  pt-6 pb-6 gap-8'>

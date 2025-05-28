@@ -54,15 +54,9 @@ export default function Navbar() {
 
                         <li className="text-colorText text-[20px] mb-4">
                             <button onClick={isMenu} className='cursor-pointer'>
-                                <Link to="/profile">Perfil</Link>
+                                <Link to="/">Perfil</Link>
                             </button>
 
-                        </li>
-
-                        <li className="text-colorText text-[20px] mb-4">
-                            <button onClick={isMenu} className='cursor-pointer'>
-                                <Link to="/">Início</Link>
-                            </button>
                         </li>
 
                         <li className="text-colorText text-[20px] mb-4">

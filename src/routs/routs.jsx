@@ -1,7 +1,6 @@
 import { HashRouter  as Router, Route, Routes } from "react-router-dom";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Home from "../pages/home";
 import ProtectedRoute from "../routs/protectedRouter";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
@@ -11,6 +10,7 @@ import Contact from "../pages/contact";
 import About from "../pages/about";
 import PublicGame from "../pages/publicGame";
 import GamePage from "../pages/gamesPage";
+import EditProfile from "../pages/editProfile";
 
 export default function RoutesPage() {
     return (
@@ -23,22 +23,13 @@ export default function RoutesPage() {
                     element={
                         <ProtectedRoute>
                             <Navbar />
-                            <Home />
-                        </ProtectedRoute>
-                    }
-                />
-                <Route
-                    path="/profile"
-                    element={
-                        <ProtectedRoute>
-                            <Navbar />
                             <Profile />
                         </ProtectedRoute>
                     }
                 />
                 
                 <Route
-                    path="/profile/publicgame"
+                    path="/publicgame"
                     element={
                         <ProtectedRoute>
                             <Navbar />
@@ -84,6 +75,16 @@ export default function RoutesPage() {
                         <ProtectedRoute>
                             <Navbar />
                             <GamePage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                 <Route
+                    path="/editprofile"
+                    element={
+                        <ProtectedRoute>
+                            <Navbar />
+                            <EditProfile />
                         </ProtectedRoute>
                     }
                 />
