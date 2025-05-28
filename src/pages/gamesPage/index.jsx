@@ -49,7 +49,7 @@ export default function GamePage() {
                         <Button
                             label="Aceitar Jogo"
                             onClick={() => window.open(
-                                `https://wa.me/5511995216604?text=🔥 Olá! Encontrei seu time no site *[Liga Fácil](https://ligafacil.vercel.app/#/)* e quero jogar. Vamos nessa?%0A
+                                `https://wa.me/5511995216604?text=🔥 Olá! Encontrei seu time no site *[Liga Fácil](https://ligafacil.vercel.app/)* e quero jogar. Vamos nessa?%0A
         🏆 Time: ${game.nomeTime}%0A
         🕒 Horário: ${game.horario}%0A
         📍 Local: ${game.rua}, ${game.numeroEndereco} - ${game.bairro}, CEP: ${game.cep}`, "_blank")}
