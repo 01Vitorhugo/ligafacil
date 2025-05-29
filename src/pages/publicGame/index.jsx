@@ -59,7 +59,7 @@ export default function PublicGame() {
             cep: userData.cep
         });
 
-        navigate('/profile');
+        navigate('/');
 
     }
 
