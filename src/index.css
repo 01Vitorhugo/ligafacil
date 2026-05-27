@@ -1,26 +1,82 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Konkhmer+Sleokchher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Konkhmer+Sleokchher&family=Inter:wght@300;400;500;600;700&display=swap');
 
+@plugin "tailwindcss-animate";
 
+@custom-variant dark (&:is(.dark *));
+
+/* ===== shadcn/ui theme tokens adapted to Liga Fácil brand ===== */
 @theme {
+  /* radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Brand Colors (kept for backward compat) */
   --color-colorText: #fff;
   --color-colorPrinOpacity: rgba(235, 135, 41, 0.4);
   --color-colorPrin: #EB8729;
   --color-colorInput: rgba(255, 255, 255, 0.4);
   --color-colorFooter: #CBCBCB;
   --color-colorTextBlack: #000;
+
+  /* shadcn dark palette — tuned to black & gold brand */
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
+  --color-card: #0a0a0c;
+  --color-card-foreground: #fafafa;
+  --color-popover: #0a0a0c;
+  --color-popover-foreground: #fafafa;
+  --color-primary: #EB8729;
+  --color-primary-foreground: #0a0a0c;
+  --color-secondary: #1c1c1f;
+  --color-secondary-foreground: #fafafa;
+  --color-muted: #1c1c1f;
+  --color-muted-foreground: #a1a1aa;
+  --color-accent: #1c1c1f;
+  --color-accent-foreground: #fafafa;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #fafafa;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-input: rgba(255, 255, 255, 0.15);
+  --color-ring: #EB8729;
+  --color-chart-1: #EB8729;
+  --color-chart-2: #d4a56a;
+  --color-chart-3: #a67c52;
+  --color-chart-4: #7a5c3a;
+  --color-chart-5: #4e3c24;
+
+  /* fonts */
+  --font-heading: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* animation */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
 }
 
 
-body{
+body {
   background-color: #000;
   font-family: "Codystar", sans-serif;
   font-weight: 600;
 }
-h1{
-   -webkit-text-stroke: 1px #eb8729;
-}
-h2{
-     -webkit-text-stroke: 1px #fff;
 
+h1 {
+  -webkit-text-stroke: 1px #eb8729;
+}
+
+h2 {
+  -webkit-text-stroke: 1px #fff;
 }
