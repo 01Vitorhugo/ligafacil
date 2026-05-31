@@ -21,7 +21,7 @@ export default function Contact() {
             />
 
             <div className="relative z-10 w-full max-w-4xl mx-auto px-4 pt-8">
-                
+
                 {/* Header */}
                 <div className="flex items-center gap-3 border-b border-white/10 pb-4 mb-8">
                     <PhoneCall className="h-7 w-7 text-[#EB8729]" />
@@ -41,11 +41,11 @@ export default function Contact() {
 
                 {/* Contact Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
+
                     {/* WhatsApp Support Card */}
                     <Card className="border-0 bg-white/[0.03] backdrop-blur-md relative overflow-hidden group hover:bg-white/[0.05] transition-all duration-300">
                         <div className="absolute top-0 inset-x-0 h-1 bg-emerald-500" />
-                        
+
                         <CardHeader className="flex flex-col items-center text-center pb-2 pt-8">
                             <div className="p-4 rounded-full bg-emerald-500/10 text-emerald-400 mb-4 group-hover:scale-110 transition-transform duration-300">
                                 <MessageCircle className="h-10 w-10" />
@@ -62,7 +62,7 @@ export default function Contact() {
                             <p className="text-sm text-white/60 max-w-xs" style={{ fontFamily: '"Inter", sans-serif' }}>
                                 Dúvidas sobre jogos, campeonatos ou problemas com o seu cadastro? Fale conosco diretamente.
                             </p>
-                            
+
                             <Button
                                 onClick={() => window.open("https://wa.me/5511995216604?text=Olá! Preciso de ajuda com a plataforma Liga Fácil.", "_blank")}
                                 className="w-full max-w-[220px] h-11 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer rounded-lg"
@@ -77,7 +77,7 @@ export default function Contact() {
                     {/* Email Support Card */}
                     <Card className="border-0 bg-white/[0.03] backdrop-blur-md relative overflow-hidden group hover:bg-white/[0.05] transition-all duration-300">
                         <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#EB8729] to-[#f5a623]" />
-                        
+
                         <CardHeader className="flex flex-col items-center text-center pb-2 pt-8">
                             <div className="p-4 rounded-full bg-[#EB8729]/10 text-[#EB8729] mb-4 group-hover:scale-110 transition-transform duration-300">
                                 <Mail className="h-10 w-10" />
@@ -94,7 +94,7 @@ export default function Contact() {
                             <p className="text-sm text-white/60 max-w-xs" style={{ fontFamily: '"Inter", sans-serif' }}>
                                 Prefere e-mail? Use para parcerias comerciais, feedback formal ou solicitações administrativas.
                             </p>
-                            
+
                             <Button
                                 onClick={() => window.location.href = "mailto:suporte.ligafacil@gmail.com?subject=Suporte Liga Fácil"}
                                 className="w-full max-w-[220px] h-11 bg-gradient-to-r from-[#EB8729] to-[#d4781e] hover:from-[#f59832] hover:to-[#EB8729] text-white font-semibold shadow-lg shadow-[#EB8729]/10 hover:shadow-[#EB8729]/20 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer rounded-lg"
@@ -113,6 +113,7 @@ export default function Contact() {
                     <HelpCircle className="h-4 w-4" />
                     <span>Nosso suporte funciona todos os dias da semana para te atender.</span>
                 </div>
+
 
             </div>
         </div>
