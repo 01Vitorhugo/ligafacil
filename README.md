@@ -53,7 +53,7 @@ Define que o acesso às informações deve ser restrito apenas a usuários autor
 ### 📝 5.2 Uso Aceitável
 Estabelece regras para o uso adequado da plataforma, proibindo atividades ilegais ou maliciosas.
 
-### 🚨 5.3 Gestão de Incidentes
+### 🚨 5.3 Gestão de Incidentess
 Define procedimentos para identificação, registro e resposta rápida a incidentes de segurança.
 
 ### 🏢 5.4 Segurança Física
