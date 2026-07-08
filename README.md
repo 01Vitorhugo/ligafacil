@@ -13,7 +13,7 @@ Diante desse cenário, torna-se indispensável a implementação de uma Polític
 
 ---
 
-## 2. Objetivoo
+## 2. Objetivo
 Este trabalho tem como objetivo elaborar uma Política de Segurança da Informação (PSI) abrangente para a empresa **Liga Fácil**, contemplando os principais domínios da segurança da informação, garantindo a proteção dos dados e a conformidade com legislações vigentes, como a Lei Geral de Proteção de Dados (LGPD).
 
 ---
